@@ -1,0 +1,33 @@
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These 
+// styles are for the entire app and not just one component. Additionally, this 
+// file can hold Sass mixins, functions, and placeholder classes to be imported 
+// and used throughout the application.
+
+@keyframes spinner-line-fade-more {
+    0%, 100% {
+      opacity: 0; /* minimum opacity */
+    }
+    1% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes spinner-line-fade-quick {
+    0%, 39%, 100% {
+      opacity: 0.25; /* minimum opacity */
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes spinner-line-fade-default {
+    0%, 100% {
+      opacity: 0.22; /* minimum opacity */
+    }
+    1% {
+      opacity: 1;
+    }
+  }

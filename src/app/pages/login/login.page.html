@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>YouNeed</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="submit()">
+    <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input type="text" [(ngModel)]="login.username" [ngModelOptions]="{standalone: true}" ></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="login.password"  [ngModelOptions]="{standalone: true}" ></ion-input>
+    </ion-item>
+    <!-- <ion-text color="danger" [(ngModel)]="errormsg" [ngModelOptions]="{standalone: true}"></ion-text> -->
+
+    <ion-button type="submit">Login</ion-button>
+  </form>
+</ion-content>
