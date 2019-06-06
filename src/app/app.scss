@@ -5,6 +5,9 @@
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
 
+$color-primary:#178b89;
+$color-secundary:#178b89;
+
 @keyframes spinner-line-fade-more {
     0%, 100% {
       opacity: 0; /* minimum opacity */
@@ -31,3 +34,35 @@
       opacity: 1;
     }
   }
+
+
+ion-header{
+  background-color:$color-primary;
+  color:#fff;
+}
+ion-header ion-toolbar{
+  background-color:$color-primary;
+  color:#fff;
+}
+ion-header .toolbar-background{
+  background-color:$color-primary;
+  color:#fff;
+}
+ion-header .toolbar-container{
+  background-color:$color-primary;
+  color:#fff;
+}
+ion-header ion-title{
+  background-color:$color-primary;
+  color:#fff;
+}
+ion-tab-bar{
+  background-color: $color-primary;
+}
+ion-tab-bar ion-tab-button{
+  background-color: $color-primary;
+  color:white;
+}
+.logo-img{
+  max-width:100px;
+}

@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
+  proxyurl = 'http://localhost:8100/api/';
   url = 'https://app.youneed.com.ec/api/';
   ajaxurl = 'https://app.youneed.com.ec/ajax/';
   apiKey = ''; // <-- Enter your own key here!
@@ -18,7 +19,13 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
 
-    /**
+  testApi() {
+  
+    return this.http.get('https://jsonplaceholder.typicode.com/users');
+  
+  }
+
+  /**
   * Login to Youneed Api 
   * map the result to return only registered user
   * 
@@ -35,19 +42,20 @@ export class ApiService {
     );
   }
 
-      /**
+  /**
   * Return pedidos 
   * map the result to return only registered user
   * 
   * @param {number} id 
   * @returns Observable with the search results
   */
- getPedidos(id: number): void {
+  getPedidos(id: number, page: number): Observable<any> {
   
   let config ={ headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded') };
-  let postData = "uid=" + id ;
-  this.http.post(`${this.ajaxurl}getpedidos`, postData, config).subscribe( 
+  let postData = "uid=" + id + "&page=" + page;
 
-  );
-}
+  return this.http.post(`${this.url}getpedidos`, postData, config).pipe(
+       map(result =>  result)
+   );
+  }
 }

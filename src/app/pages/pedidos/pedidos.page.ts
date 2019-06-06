@@ -10,21 +10,34 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./pedidos.page.scss'],
 })
 export class PedidosPage implements OnInit {
-  pedido = {
-    id : 0,
-    razon_social : "",
-    estado : 0
-  }
+  
+  pedidos
+  page
 
   constructor(private storage : Storage, private apiService : ApiService) { }
 
-  ngOnInit() {
+  loadData(){
     this.storage.get('user').then(obj => {
-      // console.log(obj.usuario.id);
-      var res = this.apiService.getPedidos(obj.usuario.id);
-      //this.pedido
-      console.log(res['pedidos']);
+
+      // this.apiService.getPedidos(obj.usuario.id).subscribe(
+      //   (data) => {}
+      // );
+
+      this.apiService.getPedidos(obj.usuario.id, this.page).subscribe(
+        (data) => { 
+          if(data){
+            this.pedidos = (data.pedidos)
+            this.page ++;
+          }
+        }
+      );
+      
     });
+  }
+
+  ngOnInit() {
+    this.page = 1;
+    this.loadData();
   }
 
 }

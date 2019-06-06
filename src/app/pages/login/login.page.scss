@@ -1,0 +1,8 @@
+:host {
+    --background: transparent !important;
+    --ion-background-color:#ffffff00;
+
+    ion-content{
+        background: url('/../../assets/img/login-background.png') center top / 100% 100% no-repeat !important;    
+    }
+}

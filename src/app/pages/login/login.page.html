@@ -1,21 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>YouNeed</ion-title>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form (ngSubmit)="submit()">
-    <ion-item>
-        <ion-label>Email</ion-label>
-        <ion-input type="text" [(ngModel)]="login.username" [ngModelOptions]="{standalone: true}" ></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="login.password"  [ngModelOptions]="{standalone: true}" ></ion-input>
-    </ion-item>
-    <!-- <ion-text color="danger" [(ngModel)]="errormsg" [ngModelOptions]="{standalone: true}"></ion-text> -->
+<ion-content id="login-form">
+    <ion-grid>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col size="3"></ion-col>
+        <ion-col size="6" class="ion-justify-content-center ion-align-items-center">
+          <ion-item class="ion-justify-content-center ion-align-items-center">
+              <img width="120" src="assets/img/logo-home.png"  />
+          </ion-item>
+        </ion-col>
+        <ion-col size="3"></ion-col>
+    </ion-row>
+    </ion-grid>
 
-    <ion-button type="submit">Login</ion-button>
+  <form (ngSubmit)="submit()">
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <ion-item>
+            <ion-input placeholder="Email" type="text" inputmode="email" pattern="email" [(ngModel)]="login.username" [ngModelOptions]="{standalone: true}" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="Contraseña" type="password" inputmode="password" [(ngModel)]="login.password"  [ngModelOptions]="{standalone: true}" ></ion-input>
+        </ion-item>
+        <!-- <ion-text color="danger" [(ngModel)]="errormsg" [ngModelOptions]="{standalone: true}"></ion-text> -->
+
+        <ion-button type="submit">Login</ion-button>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
   </form>
 </ion-content>
