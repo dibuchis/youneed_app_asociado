@@ -28,7 +28,12 @@
                   <ion-note slot="end" color="primary">{{ pedido.total }}</ion-note>
               </ion-item>
               <ion-item>
-                <ion-button fill="solid" size="default" color="primary" (click)="aceptarPedido()">Aceptar</ion-button>
+                  <ion-label>Estado</ion-label>
+                  <ion-note slot="end" color="primary">{{ pedido.estado }}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-button *ngIf="pedido.estado == 0" fill="solid" size="default" color="primary" (click)="aceptarPedido()">Aceptar</ion-button>
+                <ion-button *ngIf="pedido.estado == 1" fill="solid" size="default" color="primary" (click)="ejecutarPedido()">Ejecutar</ion-button>
                 <ion-button fill="solid" size="default" color="danger" (click)="rechazarPedido()">Rechazar</ion-button>
               </ion-item>
             </ion-card-content>
