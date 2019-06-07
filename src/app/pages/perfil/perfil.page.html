@@ -1,9 +1,177 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>perfil</ion-title>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+    <ion-card no-margin>
+      <ion-card-content class="bg-profile">
+          <ion-item>
+                <img id="img-profile" width="150" src="{{user.imagen}}">
+          </ion-item>
+          <ion-item>
+            <ion-label class="header-profile">
+              <h3 class="fw500">{{ user.nombres }} {{ user.apellidos }}</h3>
+              <p color="light" margin-bottom>{{ user.identificacion }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-button icon-left size="small" color="secondary">
+            <ion-icon name="photos"></ion-icon> 
+            Cambiar Foto
+          </ion-button>
+        </ion-card-content>
+      
+        <ion-grid fixed no-padding>
+          <ion-row>
+            <ion-col size="12" padding>
+    
+              <ion-list margin-bottom>
+                <ion-list-header color="light">
+                  <ion-label class="fw700">Datos</ion-label>
+                </ion-list-header>
+    
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Nombres:</ion-label>
+                  <ion-input inputmode="text" placeholder="Nombres" value="{{ user.nombres }}"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Apellidos:</ion-label>
+                  <ion-input inputmode="text" placeholder="Apellidos" value="{{ user.apellidos }}"></ion-input>
+                </ion-item>
+        
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Email:</ion-label>
+                  <ion-input inputmode="email" placeholder="Email" value="{{ user.email }}"></ion-input>
+                </ion-item>
+        
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Celular:</ion-label>
+                  <ion-input inputmode="text" placeholder="Dirección" value="{{ user.numero_celular }}"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Dirección:</ion-label>
+                  <ion-input inputmode="text" placeholder="Dirección" value="{{ user.direccion }}"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Tipo de cuenta:</ion-label>
+                  <ion-input inputmode="text" placeholder="Tipo de cuenta" value="{{ user.numero_cuenta }}"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="dark" position="stacked">Número de cuenta:</ion-label>
+                  <ion-input inputmode="text" placeholder="Número de  cuenta" value="{{ user.numero_cuenta }}"></ion-input>
+                </ion-item>
+        
+                <!-- <ion-item>
+                  <ion-label color="dark">City</ion-label>
+                  <ion-select>
+                    <ion-select-option value="nes">New York</ion-select-option>
+                    <ion-select-option value="n64">Los Angeles</ion-select-option>
+                    <ion-select-option value="ps">London</ion-select-option>
+                    <ion-select-option value="genesis">Paris</ion-select-option>
+                    <ion-select-option value="saturn">São Paulo</ion-select-option>
+                    <ion-select-option value="snes">Tokyo</ion-select-option>
+                    <ion-select-option value="snes">New Delhi</ion-select-option>
+                  </ion-select>
+                </ion-item> -->
+        
+                <!-- <ion-item>
+                  <ion-label color="dark">State</ion-label>
+                  <ion-select>
+                    <ion-select-option value="nes">NY</ion-select-option>
+                    <ion-select-option value="n64">CA</ion-select-option>
+                    <ion-select-option value="ps">Greater London</ion-select-option>
+                    <ion-select-option value="genesis">Paris</ion-select-option>
+                    <ion-select-option value="saturn">SP</ion-select-option>
+                    <ion-select-option value="snes">Kantō</ion-select-option>
+                    <ion-select-option value="snes">Delhi</ion-select-option>
+                  </ion-select>
+                </ion-item> -->
+              </ion-list>
+    
+              <!-- <ion-list>
+                <ion-radio-group>
+                  <ion-list-header color="light">
+                    <ion-label class="fw700">User Type</ion-label>
+                  </ion-list-header>
+              
+                  <ion-item>
+                    <ion-label color="primary">Customer</ion-label>
+                    <ion-radio slot="start" value="customer" checked></ion-radio>
+                  </ion-item>
+              
+                  <ion-item>
+                    <ion-label color="primary">Owner</ion-label>
+                    <ion-radio slot="start" value="agent"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+    
+                <ion-item>
+                  <ion-label class="text-1x">Checkbox test</ion-label>
+                  <ion-checkbox></ion-checkbox>
+                </ion-item>
+              </ion-list> -->
+      
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      
+        <ion-button size="large" expand="full" color="dark" (click)="sendData()" no-margin>Editar</ion-button>
+      </ion-card>
+      
+      <ion-card no-margin>
+        <ion-grid fixed no-padding>
+          <ion-row>
+            <ion-col><h3>Servicios</h3></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+            <ion-item-group *ngFor="let servicio of user.servicios" color="dark" no-margin>
+                <ion-item >
+                    <ion-avatar slot="start">
+                      <!-- <img src="{{ servicio.imagen }}"> -->
+                      <ion-icon name="arrow-dropright-circle"></ion-icon>
+                    </ion-avatar>
+                    <ion-label >{{ servicio.servicio_nombre }}</ion-label>
+                  </ion-item>
+
+            </ion-item-group> 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
 
 </ion-content>
+
+
+
+<ion-footer>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button routerLink="/pedidos" tab="pedidos">
+          <ion-icon name="cart"></ion-icon>
+          <ion-label>Pedidos</ion-label>
+          <ion-badge>6</ion-badge>
+        </ion-tab-button>
+    
+        <ion-tab-button routerLink="/mapa">
+          <ion-icon name="map"></ion-icon>
+          <ion-label>Mapa</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button routerLink="/notificaciones" tab="notificaciones">
+          <ion-icon name="notifications"></ion-icon>
+          <ion-label>Notificaciones</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button routerLink="/perfil" tab="perfil">
+          <ion-icon name="information-circle"></ion-icon>
+          <ion-label>Perfil</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-footer>

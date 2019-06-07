@@ -1,9 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>notificaciones</ion-title>
+    <ion-title>Notificaciones</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
 </ion-content>
+
+
+
+<ion-footer>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button routerLink="/pedidos" tab="pedidos">
+          <ion-icon name="cart"></ion-icon>
+          <ion-label>Pedidos</ion-label>
+          <ion-badge>6</ion-badge>
+        </ion-tab-button>
+    
+        <ion-tab-button routerLink="/mapa">
+          <ion-icon name="map"></ion-icon>
+          <ion-label>Mapa</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button routerLink="/notificaciones" tab="notificaciones">
+          <ion-icon name="notifications"></ion-icon>
+          <ion-label>Notificaciones</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button routerLink="/perfil" tab="perfil">
+          <ion-icon name="information-circle"></ion-icon>
+          <ion-label>Perfil</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-footer>

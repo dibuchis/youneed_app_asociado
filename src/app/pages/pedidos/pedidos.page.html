@@ -4,9 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+<ion-content padding overflow-scroll="false">
       <ion-list>
         <ion-item-group fill="outline" color="default" *ngFor="let pedido of pedidos">
         <ion-card>
@@ -33,39 +31,42 @@
               </ion-item>
               <ion-item>
                 <ion-button *ngIf="pedido.estado == 0" fill="solid" size="default" color="primary" (click)="aceptarPedido()">Aceptar</ion-button>
-                <ion-button *ngIf="pedido.estado == 1" fill="solid" size="default" color="primary" (click)="ejecutarPedido()">Ejecutar</ion-button>
+                <ion-button *ngIf="pedido.estado == 1" fill="solid" size="default" color="warning" (click)="ejecutarPedido()">Ejecutar</ion-button>
                 <ion-button fill="solid" size="default" color="danger" (click)="rechazarPedido()">Rechazar</ion-button>
               </ion-item>
             </ion-card-content>
         </ion-card>
         </ion-item-group>
       </ion-list>
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+          <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
 </ion-content>
 
-
-<ion-tabs>
+<ion-footer>
+  <ion-tabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="/pedidos">
+      <ion-tab-button routerLink="/pedidos" tab="pedidos">
         <ion-icon name="cart"></ion-icon>
         <ion-label>Pedidos</ion-label>
         <ion-badge>6</ion-badge>
       </ion-tab-button>
   
-      <ion-tab-button tab="/speakers">
+      <ion-tab-button routerLink="/mapa">
         <ion-icon name="map"></ion-icon>
         <ion-label>Mapa</ion-label>
       </ion-tab-button>
   
-      <ion-tab-button tab="/notificaciones">
+      <ion-tab-button routerLink="/notificaciones" tab="notificaciones">
         <ion-icon name="notifications"></ion-icon>
         <ion-label>Notificaciones</ion-label>
       </ion-tab-button>
   
-      <ion-tab-button tab="/perfil">
+      <ion-tab-button routerLink="/perfil" tab="perfil">
         <ion-icon name="information-circle"></ion-icon>
         <ion-label>Perfil</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
+</ion-footer>
