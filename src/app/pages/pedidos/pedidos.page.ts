@@ -15,9 +15,10 @@ export class PedidosPage implements OnInit {
 
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
-  pedidos = []
-  page
+  pedidos = [];
+  page;
   count: number = 0;
+  scrollmsg;
 
   constructor(private storage : Storage, private apiService : ApiService) { }
 
@@ -30,23 +31,26 @@ export class PedidosPage implements OnInit {
 
       this.apiService.getPedidos(obj.usuario.id, this.page).subscribe(
         (data) => { 
-          if(data){
-            for (let f = 0; f < 2; f++) {
+          if(data.pedidos.length > 0){
+            for (let f = 0; f < data.pedidos.length; f++) {
               this.pedidos.push(data.pedidos[this.count]);
               this.count++;
             }
             this.page ++;
+            event.target.complete();
+          }else{
+            event.target.disabled = true;
+            this.scrollmsg = 'No tiene más pedidos pendientes';
           }
         }
       );
 
-      event.target.complete();
       
     });
   }
 
   ngOnInit() {
-    this.page = 1;
+    this.page = 0;
     this.loadData(event);
   }
 

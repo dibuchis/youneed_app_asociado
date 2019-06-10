@@ -44,9 +44,10 @@ export class ApiService {
 
   /**
   * Return pedidos 
-  * map the result to return only registered user
+  * map the result to return pedidos
   * 
   * @param {number} id 
+  * @param {number} page 
   * @returns Observable with the search results
   */
   getPedidos(id: number, page: number): Observable<any> {
@@ -55,6 +56,24 @@ export class ApiService {
   let postData = "uid=" + id + "&page=" + page;
 
   return this.http.post(`${this.url}getpedidos`, postData, config).pipe(
+       map(result =>  result)
+   );
+  }
+
+    /**
+  * Return notificaciones 
+  * map the result to return notifications
+  * 
+  * @param {number} id 
+  * @param {number} page 
+  * @returns Observable with the search results
+  */
+ getNotificaciones(id: number, page: number): Observable<any> {
+  
+  let config ={ headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded') };
+  let postData = "uid=" + id + "&page=" + page;
+
+  return this.http.post(`${this.url}getnotificaciones`, postData, config).pipe(
        map(result =>  result)
    );
   }

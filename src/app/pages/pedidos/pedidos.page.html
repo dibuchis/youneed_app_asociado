@@ -27,7 +27,8 @@
               </ion-item>
               <ion-item>
                   <ion-label>Estado</ion-label>
-                  <ion-note slot="end" color="primary">{{ pedido.estado }}</ion-note>
+                  <!-- <ion-note slot="end" color="primary">{{ pedido.estado }}</ion-note> -->
+                  <ion-note slot="end" color="primary"></ion-note>
               </ion-item>
               <ion-item>
                 <ion-button *ngIf="pedido.estado == 0" fill="solid" size="default" color="primary" (click)="aceptarPedido()">Aceptar</ion-button>
@@ -42,6 +43,13 @@
           <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <ion-text >{{ scrollmsg }}</ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 </ion-content>
 
 <ion-footer>
